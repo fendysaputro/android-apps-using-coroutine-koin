@@ -1,0 +1,78 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdk 31
+
+    defaultConfig {
+        applicationId "id.phephen.coroutinekoinandpagination"
+        minSdk 23
+        targetSdk 31
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    ext.kotlin_version = '1.3.11'
+    ext.coroutines_version = '1.0.1'
+    ext.app_compat_version = '1.1.0-alpha01'
+    ext.constraint_layout_version = '2.0.0-alpha3'
+    ext.koin_version = '1.0.2'
+    ext.glide_version = '4.8.0'
+    ext.android_material_version = '1.0.0'
+    ext.retrofit_version = '2.5.0'
+    ext.retrofit_coroutines_adapter_version = '0.9.2'
+    ext.retrofit_gson_adapter_version = '2.4.0'
+    ext.gson_version = '2.8.5'
+    ext.pagination_version = '2.1.0'
+    ext.okhttp_version = '3.12.1'
+    ext.material_dialog_version = '2.0.0-rc7'
+
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.6.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+
+    // NETWORK
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$retrofit_coroutines_adapter_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_gson_adapter_version"
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    implementation "com.google.code.gson:gson:$gson_version"
+    implementation "androidx.paging:paging-runtime:$pagination_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
+
+    // KOIN
+    implementation "org.koin:koin-android:$koin_version"
+    implementation "org.koin:koin-android-viewmodel:$koin_version"
+
+    // MATERIAL DIALOG
+    implementation "com.afollestad.material-dialogs:core:$material_dialog_version"
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+}
