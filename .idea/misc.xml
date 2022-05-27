@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/62856/AndroidStudioProjects/BELAJAR/CoroutineKoinAndPagination/app/src/main/res/drawable/ic_directions_run_black_24dp.xml" value="0.194" />
+        <entry key="..\:/Users/62856/AndroidStudioProjects/BELAJAR/CoroutineKoinAndPagination/app/src/main/res/drawable/ic_filter_list_white_24dp.xml" value="0.194" />
+        <entry key="..\:/Users/62856/AndroidStudioProjects/BELAJAR/CoroutineKoinAndPagination/app/src/main/res/drawable/ic_healing_black_24dp.xml" value="0.194" />
+        <entry key="..\:/Users/62856/AndroidStudioProjects/BELAJAR/CoroutineKoinAndPagination/app/src/main/res/drawable/ic_search_white_24dp.xml" value="0.194" />
+        <entry key="..\:/Users/62856/AndroidStudioProjects/BELAJAR/CoroutineKoinAndPagination/app/src/main/res/drawable/ic_star_white_24dp.xml" value="0.194" />
         <entry key="..\:/Users/62856/AndroidStudioProjects/BELAJAR/CoroutineKoinAndPagination/app/src/main/res/layout/fragment_search_user.xml" value="0.1859375" />
         <entry key="..\:/Users/62856/AndroidStudioProjects/BELAJAR/CoroutineKoinAndPagination/app/src/main/res/layout/item_search_network_state.xml" value="0.1859375" />
         <entry key="..\:/Users/62856/AndroidStudioProjects/BELAJAR/CoroutineKoinAndPagination/app/src/main/res/layout/item_search_user.xml" value="0.1859375" />

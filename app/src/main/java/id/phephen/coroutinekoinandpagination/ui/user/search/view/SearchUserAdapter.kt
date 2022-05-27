@@ -26,12 +26,52 @@ class SearchUserAdapter(private val callback: View.OnClickListener): PagedListAd
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(viewType, parent, false)
         return when (viewType) {
-            R.layout.item_search_user
+            R.layout.item_search_user -> SearchUserViewHolder(
+                view
+            )
+            R.layout.item_search_network_state -> SearchUserNetworkStateViewHolder(
+                view
+            )
+            else -> throw IllegalStateException("Unknown view type $viewType")
         }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        when (getItemViewType(position)) {
+            R.layout.item_search_user -> (holder as SearchUserViewHolder).bindTo(getItem(position))
+            R.layout.item_search_network_state -> (holder as SearchUserNetworkStateViewHolder).bindTo(networkState, callback)
+        }
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return if (hasExtraRow() && position == itemCount - 1) {
+            R.layout.item_search_network_state
+        } else {
+            R.layout.item_search_user
+        }
+    }
+
+    override fun getItemCount(): Int {
+        this.callback.whenListIsUpdated(super.getItemCount(), this.networkState)
+        return super.getItemCount()
+    }
+
+    private fun hasExtraRow() = networkState != null && networkState != NetworkState.SUCCESS
+
+    fun updateNetworkState(newNetworkState: NetworkState?) {
+        val previousState = this.networkState
+        val hadExtraRow = hasExtraRow()
+        this.networkState = newNetworkState
+        val hasExtraRow = hasExtraRow()
+        if (hadExtraRow != hasExtraRow) {
+            if (hadExtraRow) {
+                notifyItemRemoved(super.getItemCount())
+            } else {
+                notifyItemInserted(super.getItemCount())
+            }
+        } else if (hasExtraRow && previousState != newNetworkState) {
+            notifyItemChanged(itemCount - 1)
+        }
     }
 
     companion object {
